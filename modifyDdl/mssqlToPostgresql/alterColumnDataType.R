@@ -30,21 +30,21 @@ for(i in 1:length(start)){
   # ATLER TABLE 
   result = unlist(lapply(alterItems,function(x) 
     if(x[2] == 'DATE')
-      paste0('ALTER TABLE ',schema,'.',tableName,' ALTER COLUMN ', x[1],' SET DATA TYPE date USING to_date(', x[1],",'YYYY-MM-DD')",';')
+      paste0('ALTER TABLE ',cdmVersion,'.',tableName,' ALTER COLUMN ', x[1],' SET DATA TYPE date USING to_date(', x[1],",'YYYY-MM-DD')",';')
     else if(x[2] == "INTEGER"){
-      paste0('ALTER TABLE ',schema,'.',tableName,' ALTER COLUMN ', x[1],' TYPE bigint USING (', x[1],'::bigint)',';')
+      paste0('ALTER TABLE ',cdmVersion,'.',tableName,' ALTER COLUMN ', x[1],' TYPE bigint USING (', x[1],'::bigint)',';')
     }else if(x[2] == "TIMESTAMP"){
-      paste0('ALTER TABLE ',schema,'.',tableName,' ALTER COLUMN ', x[1],' TYPE TIMESTAMP USING ', x[1],'::timestamp without time zone',';')
+      paste0('ALTER TABLE ',cdmVersion,'.',tableName,' ALTER COLUMN ', x[1],' TYPE TIMESTAMP USING ', x[1],'::timestamp without time zone',';')
     }
     else{
-      paste0('ALTER TABLE ',schema,'.',tableName,' ALTER COLUMN ', x[1],' TYPE ', x[2],';')
+      paste0('ALTER TABLE ',cdmVersion,'.',tableName,' ALTER COLUMN ', x[1],' TYPE ', x[2],';')
     }
   ))
   # INTEGER to BIGINT
   result = lapply(result, function(x) gsub('INTEGER','BIGINT',x))
   lapply(result, function(x) cat(x,'\n'))
   # ATLER NULL, NOT NULL 
-  # resultNull = unlist(lapply(alterItems,function(x) paste0('ALTER TABLE ',schema,'.',tableName,' ALTER COLUMN ', x[1],' SET ',paste(x[3:length(x)],collapse = ' '), ';')))
+  # resultNull = unlist(lapply(alterItems,function(x) paste0('ALTER TABLE ',cdmVersion,'.',tableName,' ALTER COLUMN ', x[1],' SET ',paste(x[3:length(x)],collapse = ' '), ';')))
   # lapply(resultNull, function(x) cat(x,'\n'))
 }
 
