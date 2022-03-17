@@ -31,10 +31,10 @@ RUN chmod +x /usr/local/bin/embulk
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/jdk/bin/java 
 
 # install embulk module
-RUN embulk gem install embulk-output-postgresql embulk-input-sqlserver
+RUN embulk gem install embulk-output-postgresql embulk-input-postgresql 
 RUN embulk gem install embulk-output-sqlserver embulk-input-sqlserver
 
-COPY ./migrationFiles /home/docker
+COPY ./results /home/docker
 
 CMD ["/bin/bash"]
     
