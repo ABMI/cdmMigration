@@ -18,9 +18,10 @@ outputCdmSchema = '' # ex) cdm
 
 
 connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = dbms,
-                                                                server = server,
+                                                                server = paste0(server,'/',cdmDatabase),
                                                                 user = user,
                                                                 password = pw,
+                                                                port = port,
                                                                 pathToDriver = getwd())
 connection = DatabaseConnector::connect(connectionDetails = connectionDetails)
 

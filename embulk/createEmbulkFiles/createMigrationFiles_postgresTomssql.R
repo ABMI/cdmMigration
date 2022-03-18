@@ -1,32 +1,31 @@
 # Details for connecting to the server:
 dbms <- "postgresql"
-user <- 'aumc_user01' # ex) user
-pw <- 'dkwneo01!' # ex) password 
-server <- '10.5.99.58' # ex) xxx.xxx.xxx.xxx
-port <- '5432' # ex) 1433
-cdmDatabase = 'omop' # ex) samplecdm
+user <- 'postgres' # ex) user
+pw <- 'serV3RI7hOabml' # ex) password 
+server <- '192.168.130.17' # ex) xxx.xxx.xxx.xxx
+port <- '5433' # ex) 5432
+cdmDatabase = 'evidnet' # ex) samplecdm
 cdmSchema = 'cdmpv534_220228' # ex) dbo
 # Details for embulk Settings:
 maxThreads = 32
 minOutputTasks = 16
-outputServer = '128.1.99.58' # ex) xxx.xxx.xxx.xxx
-outputUser = 'postgres' # ex) user
-outputPw = 'serV3RI7hOabml' # ex) password 
-outputPort = '5433' # ex) 5432
-outputCdmDatabase = 'evidnet'# ex) samplecdm
-outputCdmSchema = 'cdmpv534_220228' # ex) cdm
+outputServer = '192.168.130.17' # ex) xxx.xxx.xxx.xxx
+outputUser = 'dspark' # ex) user
+outputPw = 'qkrehdtn1!' # ex) password 
+outputPort = '1433' # ex) 5432
+outputCdmDatabase = 'CDMPv534'# ex) samplecdm
+outputCdmSchema = 'dbo' # ex) cdm
 
-# DatabaseConnector::downloadJdbcDrivers(dbms="postgresql",pathToDriver = getwd())
 connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = dbms,
-                                                                server = "10.5.99.58/omop",#paste0(server,'/',cdmDatabase),
+                                                                server = paste0(server,'/',cdmDatabase),
                                                                 user = user,
                                                                 password = pw,
+                                                                port = port,
                                                                 pathToDriver = getwd())
 connection = DatabaseConnector::connect(connectionDetails = connectionDetails)
 
 tableName <- DatabaseConnector::querySql(connection = connection,
-                                         sql = 
-                                         paste0("SELECT table_name FROM information_schema.tables WHERE table_schema=","'",cdmSchema,"'")
+                                         sql = paste0('SELECT table_name FROM information_schema.tables WHERE table_schema=',"'",cdmSchema,"'")
 )
 
 paramList = list(
@@ -47,7 +46,7 @@ paramList = list(
 )
 
 
-textFileVector <- readLines(file.path(getwd(),'sampleyaml.txt'))
+textFileVector <- readLines(file.path(getwd(),'sampleyaml_postgresTomssql.txt'))
 textFile <- paste(textFileVector,collapse = '\n')
 
 

@@ -1,0 +1,32 @@
+exec:
+  max_threads: <maxThreads>
+  min_output_tasks: <minOutputTasks>
+
+in:
+  type: postgresql
+  host: <server>
+  port: <port>
+  user: <user>
+  password: <pw>
+  database: <cdmDatabase>
+  schema: <cdmSchema>
+  query: |-
+    SELECT *
+    FROM <cdmSchema>.<tableName>
+  fetch_rows: 100000
+  connect_timeout: 60
+  application_name: embulk-input-postgresql
+  socket_timeout: 0
+  incremental: false
+
+out:
+  type: sqlserver
+  host: <outputServer>
+  port: <outputPort>
+  user: <outputUser>
+  password: <outputPw>
+  instance: MSSQLSERVER
+  database: <outputCdmDatabase>
+  schema: <outputCdmSchema>
+  table: <tableName>
+  mode: insert
