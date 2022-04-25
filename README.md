@@ -126,7 +126,7 @@ vim cdmMigration/modifyDdl/mssqlToPostgresql/alterColumnDataType.R
   
 ##input#################
 cdmSchema = '' # CDM DB의 Schema 이름 ex) cdm
-cdmVersion = '' # 이관한 CDM의 버전 ex) v5.3.1 / v5.3.0
+cdmVersion = '' # 이관한 CDM의 버전 ex) v5.3.1 / v5.3.0 (select * from cdm_source 에서 cdm version 확인)
 ########################
 ```
 위 정보를 입력한 뒤 스크립트 전체를 실행해주면, console 창에 변환 쿼리가 생성 됩니다.
