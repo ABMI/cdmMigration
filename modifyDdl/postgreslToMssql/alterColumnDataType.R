@@ -1,7 +1,7 @@
-setwd('D:\\git\\parkdongsu\\cdmMigration\\modifyDdl\\postgreslToMssql') # ./mssqlToPostgres
+setwd('D:\\git\\cdmMigration\\modifyDdl\\postgreslToMssql') # ./mssqlToPostgres
 
 ##input#################
-cdmSchema = 'cdmpv534.dbo' # ex) cdm
+cdmSchema = 'icarusv534' # ex) cdm
 cdmVersion = 'v5.3.1' # ex) v5.3.1 / v5.3.0
 ########################
 
@@ -35,7 +35,7 @@ for(i in 1:length(start)){
   result = lapply(result, function(x) gsub('INTEGER','BIGINT',x))
   # remove comma
   result = lapply(result, function(x) gsub('NULL,','NULL',x))
-  cat(paste0('SELECT TOP 10 * FROM ',cdmSchema,'.',tableName,';'),'\n')
-  # lapply(result, function(x) cat(x,'\n'))
+  # cat(paste0('SELECT TOP 10 * FROM ',cdmSchema,'.',tableName,';'),'\n')
+  lapply(result, function(x) cat(x,'\n'))
 
 }
