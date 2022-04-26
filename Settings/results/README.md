@@ -1,1 +1,1 @@
-embulk run 명령어를 실행하기 위한 yaml 파일이 저장되는 폴더 입니다.
+autoStart.sh : 여러 CDM table을 한번에 이관하기 위한 Embulk 명령어를 데몬으로 자동으로 실행하는 파일
