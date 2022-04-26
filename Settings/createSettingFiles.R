@@ -1,3 +1,4 @@
+setwd('/home/rstudio/data/Settings') # Docker 환경이 아니라면 createSettingFiles.R 이 있는 위치로 수정
 ###############################################################
 # Details for connecting to the server:
 dbms <- "" # ex) 'postgresql' or 'sql server'
