@@ -1,0 +1,8 @@
+FROM rocker/rstudio:4.0.5
+
+RUN apt-get update && \
+    apt-get install -y default-jdk
+RUN R CMD javareconf
+RUN R -e "install.packages('rJava', dependencies = TRUE)"
+
+RUN R -e "install.packages('DatabaseConnector')"

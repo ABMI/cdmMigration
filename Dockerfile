@@ -34,7 +34,5 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/jdk/bin/java
 RUN embulk gem install embulk-output-postgresql embulk-input-postgresql 
 RUN embulk gem install embulk-output-sqlserver embulk-input-sqlserver
 
-COPY ./results /home/docker
-
 CMD ["/bin/bash"]
     
